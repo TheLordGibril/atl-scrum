@@ -14,12 +14,11 @@ class Character:
             is_critical = random.randint(1, 100) <= self.critical_chance
 
             # Calculate damage
-            damage_to_deal = self.damage * 2 if is_critical else self.damage
+            damage_to_deal = 20 if is_critical else self.damage
 
             # Deal damage
             enemy.receive_damage(damage_to_deal)
 
-            # Print appropriate message
             if is_critical:
                 print(f"{self.name} lands a CRITICAL HIT on {enemy.name} for {damage_to_deal} damage points!")
             else:
