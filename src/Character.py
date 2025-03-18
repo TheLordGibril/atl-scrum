@@ -1,8 +1,8 @@
 from typing import Self
 
 class Character:
-    def __init__(self):
-        self.name: str
+    def __init__(self, name):
+        self.name: str = name
         self.hp: int = 100
         self.damage: int = 5
         self.critical_chance: int = 5
