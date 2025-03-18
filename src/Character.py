@@ -17,13 +17,12 @@ class Character:
             # Calculate damage
             damage_to_deal = 20 if is_critical else self.damage
 
-            # Deal damage
-            enemy.receive_damage(damage_to_deal)
-
             if is_critical:
                 print(f"{self.name} lands a CRITICAL HIT on {enemy.name} for {damage_to_deal} damage points!")
             else:
                 print(f"{self.name} attacks {enemy.name} for {damage_to_deal} damage points")
+            # Deal damage
+            enemy.receive_damage(damage_to_deal)
         else:
             print(f"{self.name} cannot attack because they are dead")
 
