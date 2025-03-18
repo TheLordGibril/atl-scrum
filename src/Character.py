@@ -2,7 +2,7 @@ from typing import Self
 
 class Character:
     def __init__(self):
-        self.name: str = ""
+        self.name: str
         self.hp: int = 100
         self.damage: int = 5
         self.critical_chance: int = 5
