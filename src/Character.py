@@ -30,7 +30,7 @@ class Character:
 
     def receive_damage(self, damage: int):
         self.hp -= damage
-        print(self.name + " received " + damage + " points of damage")
+        print(f"{self.name} received {damage} points of damage")
         if self.hp <= 0:
             self.is_dead = True
-            print(self.name + " is dead")
+            print(f"{self.name} is dead")
