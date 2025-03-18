@@ -10,8 +10,8 @@ class Character:
 
     def attack(self, enemy: Self):
         if not self.is_dead:
-            enemy.receive_damage(self.damage)
             print(f"{self.name} attacks {enemy.name} for {self.damage} damage points")
+            enemy.receive_damage(self.damage)
         else:
             print(f"{self.name} cannot attack because they are dead")
 
