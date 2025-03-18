@@ -7,7 +7,7 @@ class Character:
     def get_hp(self):
         return self.hp
 
-    def attaquer(self, enemy):
+    def attack(self, enemy):
         if not self.est_mort:
             enemy.received_damage(self.attack)
 
