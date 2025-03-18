@@ -21,5 +21,5 @@ class Character:
         remaining_hp = max(0, self.hp)
         print(f"{self.name} received {damage} damage points ({remaining_hp} HP remaining)")
         if self.hp <= 0:
-            self.is_dead = True
             print(f"{self.name} is dead")
+            self.is_dead = True
