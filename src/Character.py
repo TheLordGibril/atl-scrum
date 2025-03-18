@@ -1,7 +1,7 @@
 from typing import Self
 
 class Character:
-    def __init__(self, name):
+    def __init__(self, name: str = "Character"):
         self.name: str = name
         self.hp: int = 100
         self.damage: int = 5
