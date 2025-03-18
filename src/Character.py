@@ -10,10 +10,22 @@ class Character:
 
     def attack(self, enemy: Self):
         if not self.is_dead:
-            enemy.receive_damage(self.damage)
-            print(self.name + " attacks " + enemy.name + " for " + self.damage + " points of damage")
+            # Determine if attack is a critical hit
+            is_critical = random.randint(1, 100) <= self.critical_chance
+
+            # Calculate damage
+            damage_to_deal = self.damage * 2 if is_critical else self.damage
+
+            # Deal damage
+            enemy.receive_damage(damage_to_deal)
+
+            # Print appropriate message
+            if is_critical:
+                print(f"{self.name} lands a CRITICAL HIT on {enemy.name} for {damage_to_deal} damage points!")
+            else:
+                print(f"{self.name} attacks {enemy.name} for {damage_to_deal} damage points")
         else:
-            print(self.name + " cannot attack because is dead")
+            print(f"{self.name} cannot attack because they are dead")
 
 
     def receive_damage(self, damage: int):
