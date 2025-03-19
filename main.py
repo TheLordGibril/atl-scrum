@@ -82,6 +82,13 @@ def generate_medieval_name():
     
     return "".join(name_parts)
 
+
+def print_logs(filename):
+    f = open(filename,"r")
+    contents = f.read()
+    print(contents)
+
+
 # Fonction pour quitter l'application
 def exit_application():
     """Quitte l'application proprement"""
@@ -141,6 +148,9 @@ class BattleLogger:
             f.write(f"FIN DU COMBAT - {datetime.datetime.now().strftime('%d/%m/%Y %H:%M:%S')}")
         
         return filename
+    
+
+
 
 class BattleSpeedController:
     """Classe pour contrôler la vitesse et la pause du combat"""
@@ -731,11 +741,16 @@ def main():
         
         # Sauvegarde des logs
         log_file = battle_logger.save_to_file("BLEUE", "ROUGE", winner_team)
+
         print(f"\n{COLORS['GREEN']}Logs du combat sauvegardés dans: {log_file}{COLORS['RESET']}")
         
         # Option pour quitter
         print(f"\n{COLORS['YELLOW']}Appuyez sur Échap pour quitter ou sur Entrée pour terminer{COLORS['RESET']}")
         input()
+        if keyboard.is_pressed('l'):
+            print_logs(log_file)
+        else:
+            return
     
     except KeyboardInterrupt:
         # Gestion de l'interruption (Ctrl+C)
@@ -745,7 +760,10 @@ def main():
         battle_logger.add_log("Combat interrompu par l'utilisateur")
         log_file = battle_logger.save_to_file("BLEUE", "ROUGE", "INTERRUPTION")
         print(f"\n{COLORS['GREEN']}Logs du combat sauvegardés dans: {log_file}{COLORS['RESET']}")
-    
+        if keyboard.is_pressed('l'):
+            print_logs(log_file)
+        else:
+            return
     finally:
         # Arrête la gestion du clavier
         keyboard.unhook_all()
