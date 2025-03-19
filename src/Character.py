@@ -19,7 +19,8 @@ def strip_ansi_codes(text):
 class Character:
     def __init__(self, name: str = "Character", team_color: str = "BLUE", 
                  hp: int = 100, min_damage: int = 0, max_damage: int = 10, 
-                 critical_chance: int = 10, fumble_chance: int = 5):
+                 critical_chance: int = 10, fumble_chance: int = 5,
+                 speed: int = 10):
         self.name: str = name
         self.hp: int = hp
         self.max_hp: int = hp
@@ -27,9 +28,16 @@ class Character:
         self.max_damage: int = max_damage
         self.critical_chance: int = critical_chance  # Pourcentage de chance d'infliger des dégâts doubles
         self.fumble_chance: int = fumble_chance      # Pourcentage de chance de rater l'attaque
+        self.speed: int = speed                      # Vitesse du personnage pour l'initiative
         self.is_dead: bool = False
         self.team_color: str = team_color
         self.message_log: list = []
+        self.initiative_roll: int = 0                # Pour départager les égalités de vitesse
+    
+    def roll_initiative(self):
+        """Lance un dé d'initiative pour départager les égalités de vitesse"""
+        self.initiative_roll = random.randint(1, 20)
+        return self.initiative_roll
     
     def get_colored_name(self):
         """Retourne le nom du personnage avec sa couleur d'équipe"""
@@ -92,12 +100,10 @@ class Character:
     def get_stats_display(self):
         """Affiche les statistiques du personnage"""
         return (f"{self.get_colored_name()}: {self.hp} HP, {self.min_damage}-{self.max_damage} DMG, "
-                f"{self.critical_chance}% Crit, {self.fumble_chance}% Fumble")
+                f"{self.critical_chance}% Crit, {self.fumble_chance}% Fumble, {self.speed} Vitesse")
     
     def clear_messages(self):
         """Vide le journal de messages et retourne les messages effacés"""
         messages = self.message_log.copy()
         self.message_log = []
         return messages
-
-    

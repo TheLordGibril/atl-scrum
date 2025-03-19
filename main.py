@@ -225,7 +225,7 @@ def display_character_selection():
         print(f"{COLORS['BOLD']}[{i+1}]{COLORS['RESET']} {character.name}")
         print(f"    {CharacterRoster.get_character_description(i)}")
         print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
-        print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}%")
+        print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}")
         print()
     
     return characters
@@ -313,7 +313,8 @@ def interactive_character_selection(characters, team_name, team_color, team_size
                 min_damage=selected_char.min_damage,
                 max_damage=selected_char.max_damage,
                 critical_chance=selected_char.critical_chance,
-                fumble_chance=selected_char.fumble_chance
+                fumble_chance=selected_char.fumble_chance,
+                speed=selected_char.speed
             )
             team.append(character)
             
@@ -358,7 +359,7 @@ def select_team_members_manual(team_name, team_color, available_characters, team
             print(f"{COLORS['BOLD']}[{j+1}]{COLORS['RESET']} {character.name}")
             print(f"    {CharacterRoster.get_character_description(j)}")
             print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
-            print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}%\n")
+            print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}\n")
         
         # Demande la sélection
         while True:
@@ -377,7 +378,8 @@ def select_team_members_manual(team_name, team_color, available_characters, team
                         min_damage=selected_char.min_damage,
                         max_damage=selected_char.max_damage,
                         critical_chance=selected_char.critical_chance,
-                        fumble_chance=selected_char.fumble_chance
+                        fumble_chance=selected_char.fumble_chance,
+                        speed=selected_char.speed
                     )
                     team.append(character)
                     print(f"{COLORS['GREEN']}Personnage {selected_char.name} '{medieval_name}' ajouté à l'équipe {team_name}!{COLORS['RESET']}")
@@ -422,7 +424,7 @@ def display_selection_screen(characters, current_index, team_name, team_color, c
         if i == current_index:
             print(f"    {CharacterRoster.get_character_description(i)}")
             print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
-            print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}%")
+            print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}")
         print()
     
     # Liste des personnages déjà sélectionnés
@@ -482,6 +484,34 @@ def display_team_battle(team1, team2, speed_controller, round_num):
     # Retourne les messages pour le logger
     return all_messages
 
+def determine_turn_order(team1, team2, battle_logger):
+    """
+    Détermine l'ordre de jeu en fonction de la vitesse des personnages.
+    En cas d'égalité, un jet d'initiative est fait.
+    """
+    # Récupère tous les personnages vivants
+    all_living_characters = get_living_characters(team1) + get_living_characters(team2)
+    
+    # Lance un dé d'initiative pour chaque personnage
+    for character in all_living_characters:
+        initiative_roll = character.roll_initiative()
+        battle_logger.add_log(f"{character.get_colored_name()} lance un dé d'initiative: {initiative_roll}")
+    
+    # Trie les personnages par vitesse (du plus rapide au plus lent)
+    # En cas d'égalité, utilise le jet d'initiative
+    sorted_characters = sorted(
+        all_living_characters, 
+        key=lambda x: (x.speed, x.initiative_roll),
+        reverse=True
+    )
+    
+    # Journalisation de l'ordre des tours
+    battle_logger.add_log("Ordre des tours pour ce round:")
+    for i, character in enumerate(sorted_characters):
+        battle_logger.add_log(f"{i+1}. {character.get_colored_name()} (Vitesse: {character.speed}, Initiative: {character.initiative_roll})")
+    
+    return sorted_characters
+
 def team_is_defeated(team):
     """Vérifie si tous les membres d'une équipe sont morts"""
     return all(character.is_dead for character in team)
@@ -512,6 +542,7 @@ def main():
         # Ajoute un log d'entrée
         battle_logger.add_log("Démarrage du jeu")
         
+        # Demande la taille de l'équipe Bleue
         while True:
             try:
                 team1_size = int(input("\nCombien de personnages pour l'équipe BLEUE? (1-4): "))
@@ -533,7 +564,6 @@ def main():
             except ValueError:
                 print(f"{COLORS['RED']}Veuillez entrer un nombre valide.{COLORS['RESET']}")
 
-        
         battle_logger.add_log(f"Taille équipe BLEUE: {team1_size} personnages")
         battle_logger.add_log(f"Taille équipe ROUGE: {team2_size} personnages")
         
@@ -546,7 +576,7 @@ def main():
         # Log des personnages choisis pour l'équipe 1
         battle_logger.add_log("Équipe BLEUE composée de:")
         for char in team1:
-            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble")
+            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
         
         # Sélection de l'équipe 2 (rouge) avec l'interface interactive
         team2 = select_team_members_interactive("ROUGE", "RED", available_characters, team2_size)
@@ -554,7 +584,34 @@ def main():
         # Log des personnages choisis pour l'équipe 2
         battle_logger.add_log("Équipe ROUGE composée de:")
         for char in team2:
-            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble")
+            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
+        
+        # Équilibrage optionnel pour les équipes de tailles différentes
+        if team1_size < team2_size:
+            # Bonus pour l'équipe 1 qui est plus petite
+            bonus_factor = round(team2_size / team1_size, 1)  # Facteur de bonus basé sur le ratio
+            print(f"\n{COLORS['BLUE']}Bonus d'équilibrage pour l'équipe BLEUE (équipe plus petite):{COLORS['RESET']}")
+            for character in team1:
+                character.hp = int(character.hp * bonus_factor)
+                character.max_hp = character.hp
+                character.min_damage = int(character.min_damage * bonus_factor)
+                character.max_damage = int(character.max_damage * bonus_factor)
+                battle_logger.add_log(f"Bonus appliqué à {character.name}: stats x{bonus_factor}")
+                print(f"- {character.name}: stats x{bonus_factor}")
+            time.sleep(1.5)  # Pause pour que le joueur puisse lire
+
+        elif team2_size < team1_size:
+            # Bonus pour l'équipe 2 qui est plus petite
+            bonus_factor = round(team1_size / team2_size, 1)
+            print(f"\n{COLORS['RED']}Bonus d'équilibrage pour l'équipe ROUGE (équipe plus petite):{COLORS['RESET']}")
+            for character in team2:
+                character.hp = int(character.hp * bonus_factor)
+                character.max_hp = character.hp
+                character.min_damage = int(character.min_damage * bonus_factor)
+                character.max_damage = int(character.max_damage * bonus_factor)
+                battle_logger.add_log(f"Bonus appliqué à {character.name}: stats x{bonus_factor}")
+                print(f"- {character.name}: stats x{bonus_factor}")
+            time.sleep(1.5)  # Pause pour que le joueur puisse lire
         
         # Confirmation des sélections
         clear_screen()
@@ -587,6 +644,7 @@ def main():
         
         while not team_is_defeated(team1) and not team_is_defeated(team2):
             battle_logger.add_round_separator(round_num)
+            battle_logger.add_log(f"Détermination de l'ordre d'initiative pour le round {round_num}")
             
             # Affiche l'état du combat avec le numéro de round
             messages = display_team_battle(team1, team2, speed_controller, round_num)
@@ -594,38 +652,41 @@ def main():
                 battle_logger.add_log(msg)
                 
             print(f"\n{COLORS['BOLD']}--- ROUND {round_num} ---{COLORS['RESET']}")
+            print(f"\n{COLORS['YELLOW']}Lancement des dés d'initiative...{COLORS['RESET']}")
             
-            # Récupère les personnages encore en vie
-            living_team1 = get_living_characters(team1)
-            living_team2 = get_living_characters(team2)
+            # Détermine l'ordre de jeu basé sur la vitesse
+            turn_order = determine_turn_order(team1, team2, battle_logger)
             
-            # Équipe 1 attaque
-            for attacker in living_team1:
-                if not team_is_defeated(team2):
+            # Affiche l'ordre des tours
+            print(f"\n{COLORS['BOLD']}Ordre des tours pour ce round:{COLORS['RESET']}")
+            for i, character in enumerate(turn_order):
+                speed_text = f"{COLORS['YELLOW']}Vitesse: {character.speed}, Initiative: {character.initiative_roll}{COLORS['RESET']}"
+                print(f"{i+1}. {character.get_colored_name()} - {speed_text}")
+            
+            speed_controller.wait(1.0)
+            
+            # Exécute les attaques dans l'ordre déterminé
+            for attacker in turn_order:
+                if attacker.is_dead:
+                    continue  # Vérifie que le personnage est toujours en vie
+                
+                # Identifie l'équipe ennemie
+                enemy_team = team2 if attacker.team_color == "BLUE" else team1
+                
+                if not team_is_defeated(enemy_team):
                     # Sélectionne une cible aléatoire parmi les personnages encore en vie
-                    target = random.choice(get_living_characters(team2))
-                    attacker.attack(target)
-                    # Affiche l'état et attends
-                    messages = display_team_battle(team1, team2, speed_controller, round_num)
-                    for msg in messages:
-                        battle_logger.add_log(msg)
-                        print(msg)
-                    speed_controller.wait(0.3)
-            
-            speed_controller.wait(0.5)
-            
-            # Équipe 2 attaque
-            for attacker in living_team2:
-                if not team_is_defeated(team1):
-                    # Sélectionne une cible aléatoire parmi les personnages encore en vie
-                    target = random.choice(get_living_characters(team1))
-                    attacker.attack(target)
-                    # Affiche l'état et attends
-                    messages = display_team_battle(team1, team2, speed_controller, round_num)
-                    for msg in messages:
-                        battle_logger.add_log(msg)
-                        print(msg)
-                    speed_controller.wait(0.3)
+                    living_enemies = get_living_characters(enemy_team)
+                    if living_enemies:
+                        target = random.choice(living_enemies)
+                        attacker.attack(target)
+                        
+                        # Affiche l'état et attends
+                        messages = display_team_battle(team1, team2, speed_controller, round_num)
+                        for msg in messages:
+                            battle_logger.add_log(msg)
+                            print(msg)
+                        
+                        speed_controller.wait(0.3)
             
             round_num += 1
             speed_controller.wait(1.0)
