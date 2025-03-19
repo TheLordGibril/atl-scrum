@@ -512,24 +512,36 @@ def main():
         # Ajoute un log d'entrée
         battle_logger.add_log("Démarrage du jeu")
         
-        # Demande la taille des équipes
         while True:
             try:
-                team_size = int(input("\nCombien de personnages par équipe? (1-4): "))
-                if 1 <= team_size <= 4:
+                team1_size = int(input("\nCombien de personnages pour l'équipe BLEUE? (1-4): "))
+                if 1 <= team1_size <= 4:
                     break
                 else:
                     print(f"{COLORS['RED']}Veuillez entrer un nombre entre 1 et 4.{COLORS['RESET']}")
             except ValueError:
                 print(f"{COLORS['RED']}Veuillez entrer un nombre valide.{COLORS['RESET']}")
+
+        # Demande la taille de l'équipe Rouge
+        while True:
+            try:
+                team2_size = int(input("\nCombien de personnages pour l'équipe ROUGE? (1-4): "))
+                if 1 <= team2_size <= 4:
+                    break
+                else:
+                    print(f"{COLORS['RED']}Veuillez entrer un nombre entre 1 et 4.{COLORS['RESET']}")
+            except ValueError:
+                print(f"{COLORS['RED']}Veuillez entrer un nombre valide.{COLORS['RESET']}")
+
         
-        battle_logger.add_log(f"Taille d'équipe choisie: {team_size} personnages")
+        battle_logger.add_log(f"Taille équipe BLEUE: {team1_size} personnages")
+        battle_logger.add_log(f"Taille équipe ROUGE: {team2_size} personnages")
         
         # Sélection des personnages
         available_characters = CharacterRoster.get_all_characters()
         
         # Sélection de l'équipe 1 (bleue) avec l'interface interactive
-        team1 = select_team_members_interactive("BLEUE", "BLUE", available_characters, team_size)
+        team1 = select_team_members_interactive("BLEUE", "BLUE", available_characters, team1_size)
         
         # Log des personnages choisis pour l'équipe 1
         battle_logger.add_log("Équipe BLEUE composée de:")
@@ -537,7 +549,7 @@ def main():
             battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble")
         
         # Sélection de l'équipe 2 (rouge) avec l'interface interactive
-        team2 = select_team_members_interactive("ROUGE", "RED", available_characters, team_size)
+        team2 = select_team_members_interactive("ROUGE", "RED", available_characters, team2_size)
         
         # Log des personnages choisis pour l'équipe 2
         battle_logger.add_log("Équipe ROUGE composée de:")
