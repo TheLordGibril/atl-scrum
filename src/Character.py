@@ -61,7 +61,7 @@ class Character:
             if is_critical:
                 attack_msg = f"{self.get_colored_name()} assène un {COLORS['YELLOW']}COUP CRITIQUE{COLORS['RESET']} à {enemy.get_colored_name()} pour {damage_dealt} points de dégâts!"
             else:
-                attack_msg = f"{self.get_colored_name()} attaque {enemy.get_colored_name()} pour {damage_dealt} points de dégâts"
+                attack_msg = f"{self.get_colored_name()} lance un dé a {self.max_damage} faces et obtient un {base_damage} ! Il attaque {enemy.get_colored_name()} pour {damage_dealt} points de dégâts"
             
             self.message_log.append(attack_msg)
             enemy.receive_damage(damage_dealt)
