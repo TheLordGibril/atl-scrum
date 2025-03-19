@@ -32,7 +32,8 @@ class Character:
         self.is_dead: bool = False
         self.team_color: str = team_color
         self.message_log: list = []
-        self.initiative_roll: int = 0                # Pour départager les égalités de vitesse
+        self.initiative_roll = 0        # Pour le jet d'initiative principal
+        self.tiebreaker_roll = 0 
     
     def roll_initiative(self):
         """Lance un dé d'initiative pour départager les égalités de vitesse"""

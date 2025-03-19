@@ -497,7 +497,7 @@ def display_team_battle(team1, team2, speed_controller, round_num):
 def determine_turn_order(team1, team2, battle_logger):
     """
     Détermine l'ordre de jeu en fonction de la vitesse des personnages.
-    En cas d'égalité, un jet d'initiative est fait.
+    En cas d'égalité de vitesse et d'initiative, un second jet est effectué.
     """
     # Récupère tous les personnages vivants
     all_living_characters = get_living_characters(team1) + get_living_characters(team2)
@@ -507,21 +507,43 @@ def determine_turn_order(team1, team2, battle_logger):
         initiative_roll = character.roll_initiative()
         battle_logger.add_log(f"{character.get_colored_name()} lance un dé d'initiative: {initiative_roll}")
     
-    # Trie les personnages par vitesse (du plus rapide au plus lent)
-    # En cas d'égalité, utilise le jet d'initiative
+    # Vérifier s'il y a des égalités totales (même vitesse et même initiative)
+    speed_initiative_groups = {}
+    for character in all_living_characters:
+        key = (character.speed, character.initiative_roll)
+        if key not in speed_initiative_groups:
+            speed_initiative_groups[key] = []
+        speed_initiative_groups[key].append(character)
+    
+    # S'il y a des égalités, faire un second jet pour départager
+    for key, characters in speed_initiative_groups.items():
+        if len(characters) > 1:
+            battle_logger.add_log(f"Égalité détectée entre {len(characters)} personnages avec Vitesse={key[0]}, Initiative={key[1]}")
+            print(f"\n{COLORS['YELLOW']}Égalité d'initiative! Second jet pour départager:{COLORS['RESET']}")
+            
+            # Attribue un nombre aléatoire unique à chaque personnage pour départager
+            for character in characters:
+                tiebreaker = random.randint(1, 100)
+                character.tiebreaker_roll = tiebreaker
+                battle_logger.add_log(f"{character.get_colored_name()} lance un dé de départage: {tiebreaker}")
+                print(f"{character.get_colored_name()} lance un dé de départage: {tiebreaker}")
+    
+    # Trie les personnages par vitesse, puis par initiative, puis par départage si nécessaire
     sorted_characters = sorted(
         all_living_characters, 
-        key=lambda x: (x.speed, x.initiative_roll),
+        key=lambda x: (x.speed, x.initiative_roll, getattr(x, 'tiebreaker_roll', 0)),
         reverse=True
     )
     
     # Journalisation de l'ordre des tours
     battle_logger.add_log("Ordre des tours pour ce round:")
     for i, character in enumerate(sorted_characters):
-        battle_logger.add_log(f"{i+1}. {character.get_colored_name()} (Vitesse: {character.speed}, Initiative: {character.initiative_roll})")
+        initiative_info = f"Vitesse: {character.speed}, Initiative: {character.initiative_roll}"
+        if hasattr(character, 'tiebreaker_roll'):
+            initiative_info += f", Départage: {character.tiebreaker_roll}"
+        battle_logger.add_log(f"{i+1}. {character.get_colored_name()} ({initiative_info})")
     
     return sorted_characters
-
 def team_is_defeated(team):
     """Vérifie si tous les membres d'une équipe sont morts"""
     return all(character.is_dead for character in team)
@@ -595,33 +617,6 @@ def main():
         battle_logger.add_log("Équipe ROUGE composée de:")
         for char in team2:
             battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
-        
-        # Équilibrage optionnel pour les équipes de tailles différentes
-        if team1_size < team2_size:
-            # Bonus pour l'équipe 1 qui est plus petite
-            bonus_factor = round(team2_size / team1_size, 1)  # Facteur de bonus basé sur le ratio
-            print(f"\n{COLORS['BLUE']}Bonus d'équilibrage pour l'équipe BLEUE (équipe plus petite):{COLORS['RESET']}")
-            for character in team1:
-                character.hp = int(character.hp * bonus_factor)
-                character.max_hp = character.hp
-                character.min_damage = int(character.min_damage * bonus_factor)
-                character.max_damage = int(character.max_damage * bonus_factor)
-                battle_logger.add_log(f"Bonus appliqué à {character.name}: stats x{bonus_factor}")
-                print(f"- {character.name}: stats x{bonus_factor}")
-            time.sleep(1.5)  # Pause pour que le joueur puisse lire
-
-        elif team2_size < team1_size:
-            # Bonus pour l'équipe 2 qui est plus petite
-            bonus_factor = round(team1_size / team2_size, 1)
-            print(f"\n{COLORS['RED']}Bonus d'équilibrage pour l'équipe ROUGE (équipe plus petite):{COLORS['RESET']}")
-            for character in team2:
-                character.hp = int(character.hp * bonus_factor)
-                character.max_hp = character.hp
-                character.min_damage = int(character.min_damage * bonus_factor)
-                character.max_damage = int(character.max_damage * bonus_factor)
-                battle_logger.add_log(f"Bonus appliqué à {character.name}: stats x{bonus_factor}")
-                print(f"- {character.name}: stats x{bonus_factor}")
-            time.sleep(1.5)  # Pause pour que le joueur puisse lire
         
         # Confirmation des sélections
         clear_screen()
