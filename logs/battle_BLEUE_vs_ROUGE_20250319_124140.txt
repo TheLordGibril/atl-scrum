@@ -1,0 +1,145 @@
+============================================================
+COMBAT : BLEUE VS ROUGE
+Date: 19/03/2025 12:41:40
+Vainqueur: ROUGE
+============================================================
+
+[12:41:40] Démarrage du jeu
+[12:41:42] Taille d'équipe choisie: 1 personnages
+[12:41:44] Équipe BLEUE composée de:
+[12:41:44] - Guerrier Glorka: 120 HP, 2-10 DMG, 10% Crit, 5% Fumble
+[12:41:45] Équipe ROUGE composée de:
+[12:41:45] - Guerrier Granshin: 120 HP, 2-10 DMG, 10% Crit, 5% Fumble
+[12:41:45] Début du combat
+
+========================================
+ROUND 1
+========================================
+[12:41:45] Guerrier Glorka attaque Guerrier Granshin pour 7 points de dégâts
+[12:41:45] Guerrier Granshin reçoit 7 points de dégâts (113/120 HP - 94%)
+[12:41:46] Guerrier Glorka reçoit 4 points de dégâts (116/120 HP - 96%)
+[12:41:46] Guerrier Granshin attaque Guerrier Glorka pour 4 points de dégâts
+
+========================================
+ROUND 2
+========================================
+[12:41:47] Guerrier Glorka attaque Guerrier Granshin pour 3 points de dégâts
+[12:41:47] Guerrier Granshin reçoit 3 points de dégâts (110/120 HP - 91%)
+[12:41:48] Guerrier Glorka reçoit 5 points de dégâts (111/120 HP - 92%)
+[12:41:48] Guerrier Granshin attaque Guerrier Glorka pour 5 points de dégâts
+
+========================================
+ROUND 3
+========================================
+[12:41:49] Guerrier Glorka attaque Guerrier Granshin pour 10 points de dégâts
+[12:41:49] Guerrier Granshin reçoit 10 points de dégâts (100/120 HP - 83%)
+[12:41:50] Guerrier Glorka reçoit 2 points de dégâts (109/120 HP - 90%)
+[12:41:50] Guerrier Granshin attaque Guerrier Glorka pour 2 points de dégâts
+
+========================================
+ROUND 4
+========================================
+[12:41:51] Guerrier Glorka attaque Guerrier Granshin pour 10 points de dégâts
+[12:41:51] Guerrier Granshin reçoit 10 points de dégâts (90/120 HP - 75%)
+[12:41:52] Guerrier Glorka reçoit 16 points de dégâts (93/120 HP - 77%)
+[12:41:52] Guerrier Granshin assène un COUP CRITIQUE à Guerrier Glorka pour 16 points de dégâts!
+
+========================================
+ROUND 5
+========================================
+[12:41:54] Guerrier Glorka assène un COUP CRITIQUE à Guerrier Granshin pour 20 points de dégâts!
+[12:41:54] Guerrier Granshin reçoit 20 points de dégâts (70/120 HP - 58%)
+[12:41:54] Guerrier Glorka reçoit 10 points de dégâts (83/120 HP - 69%)
+[12:41:54] Guerrier Granshin attaque Guerrier Glorka pour 10 points de dégâts
+
+========================================
+ROUND 6
+========================================
+[12:41:54] Guerrier Glorka rate complètement son attaque contre Guerrier Granshin !
+[12:41:54] Guerrier Glorka reçoit 7 points de dégâts (76/120 HP - 63%)
+[12:41:54] Guerrier Granshin attaque Guerrier Glorka pour 7 points de dégâts
+
+========================================
+ROUND 7
+========================================
+[12:41:54] Guerrier Glorka attaque Guerrier Granshin pour 8 points de dégâts
+[12:41:54] Guerrier Granshin reçoit 8 points de dégâts (62/120 HP - 51%)
+[12:41:54] Guerrier Glorka reçoit 3 points de dégâts (73/120 HP - 60%)
+[12:41:54] Guerrier Granshin attaque Guerrier Glorka pour 3 points de dégâts
+
+========================================
+ROUND 8
+========================================
+[12:41:54] Guerrier Glorka attaque Guerrier Granshin pour 6 points de dégâts
+[12:41:54] Guerrier Granshin reçoit 6 points de dégâts (56/120 HP - 46%)
+[12:41:54] Guerrier Glorka reçoit 8 points de dégâts (65/120 HP - 54%)
+[12:41:54] Guerrier Granshin attaque Guerrier Glorka pour 8 points de dégâts
+
+========================================
+ROUND 9
+========================================
+[12:41:55] Guerrier Glorka attaque Guerrier Granshin pour 6 points de dégâts
+[12:41:55] Guerrier Granshin reçoit 6 points de dégâts (50/120 HP - 41%)
+[12:41:55] Guerrier Glorka reçoit 10 points de dégâts (55/120 HP - 45%)
+[12:41:55] Guerrier Granshin assène un COUP CRITIQUE à Guerrier Glorka pour 10 points de dégâts!
+
+========================================
+ROUND 10
+========================================
+[12:41:55] Guerrier Glorka attaque Guerrier Granshin pour 7 points de dégâts
+[12:41:55] Guerrier Granshin reçoit 7 points de dégâts (43/120 HP - 35%)
+[12:41:55] Guerrier Glorka reçoit 8 points de dégâts (47/120 HP - 39%)
+[12:41:55] Guerrier Granshin attaque Guerrier Glorka pour 8 points de dégâts
+
+========================================
+ROUND 11
+========================================
+[12:41:55] Guerrier Glorka rate complètement son attaque contre Guerrier Granshin !
+[12:41:55] Guerrier Granshin rate complètement son attaque contre Guerrier Glorka !
+
+========================================
+ROUND 12
+========================================
+[12:41:55] Guerrier Glorka attaque Guerrier Granshin pour 9 points de dégâts
+[12:41:55] Guerrier Granshin reçoit 9 points de dégâts (34/120 HP - 28%)
+[12:41:55] Guerrier Glorka reçoit 10 points de dégâts (37/120 HP - 30%)
+[12:41:55] Guerrier Granshin attaque Guerrier Glorka pour 10 points de dégâts
+
+========================================
+ROUND 13
+========================================
+[12:41:55] Guerrier Glorka assène un COUP CRITIQUE à Guerrier Granshin pour 14 points de dégâts!
+[12:41:55] Guerrier Granshin reçoit 14 points de dégâts (20/120 HP - 16%)
+[12:41:56] Guerrier Glorka reçoit 20 points de dégâts (17/120 HP - 14%)
+[12:41:56] Guerrier Granshin assène un COUP CRITIQUE à Guerrier Glorka pour 20 points de dégâts!
+
+========================================
+ROUND 14
+========================================
+[12:41:56] Guerrier Glorka attaque Guerrier Granshin pour 5 points de dégâts
+[12:41:56] Guerrier Granshin reçoit 5 points de dégâts (15/120 HP - 12%)
+[12:41:56] Guerrier Glorka reçoit 4 points de dégâts (13/120 HP - 10%)
+[12:41:56] Guerrier Granshin attaque Guerrier Glorka pour 4 points de dégâts
+
+========================================
+ROUND 15
+========================================
+[12:41:56] Guerrier Glorka attaque Guerrier Granshin pour 5 points de dégâts
+[12:41:56] Guerrier Granshin reçoit 5 points de dégâts (10/120 HP - 8%)
+[12:41:56] Guerrier Glorka reçoit 10 points de dégâts (3/120 HP - 2%)
+[12:41:56] Guerrier Granshin attaque Guerrier Glorka pour 10 points de dégâts
+
+========================================
+ROUND 16
+========================================
+[12:41:56] Guerrier Glorka attaque Guerrier Granshin pour 2 points de dégâts
+[12:41:56] Guerrier Granshin reçoit 2 points de dégâts (8/120 HP - 6%)
+[12:41:56] Guerrier Glorka reçoit 9 points de dégâts (0/120 HP - 0%)
+[12:41:56] Guerrier Glorka est mort !
+[12:41:56] Guerrier Granshin attaque Guerrier Glorka pour 9 points de dégâts
+[12:41:56] L'équipe ROUGE a gagné en 16 rounds!
+[12:41:56] Personnages survivants: 1
+[12:41:56] Survivant (ROUGE): Guerrier Granshin: 8/120 HP
+
+============================================================
+FIN DU COMBAT - 19/03/2025 12:41:56
