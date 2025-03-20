@@ -46,13 +46,45 @@ class Character:
     def get_colored_name(self):
         """Retourne le nom du personnage avec sa couleur d'équipe"""
         return f"{COLORS[self.team_color]}{self.name}{COLORS['RESET']}"
-    
-    def attack(self, enemy: Self):
+    def attack(self, enemy: Self, team1=None, team2=None):
         if not self.is_dead:
-            # Vérification si l'attaque rate (fumble)
+            if "Paladin" in self.name:
+                heal_amount = 15
+                paladin_hp_percent = self.hp / self.max_hp
+                if paladin_hp_percent < 0.7:
+                    old_hp = self.hp
+                    self.hp = min(self.max_hp, self.hp + heal_amount)
+                    heal_msg = f"{self.get_colored_name()} se soigne pour {COLORS['GREEN']}{heal_amount}{COLORS['RESET']} points de vie! ({old_hp} → {self.hp}/{self.max_hp} HP)"
+                    self.message_log.append(heal_msg)
+                    return
+                team_members = []
+                
+                if team1 is not None and team2 is not None:
+                    if self.team_color == "BLUE":
+                        team_members = [char for char in team1 if not char.is_dead]
+                    else:
+                        team_members = [char for char in team2 if not char.is_dead]
+                
+                ally_to_heal = None
+                lowest_hp_percent = 0.7  
+                
+                for ally in team_members:
+                    if ally != self:
+                        ally_hp_percent = ally.hp / ally.max_hp
+                        if ally_hp_percent < 0.7 and (ally_to_heal is None or ally_hp_percent < lowest_hp_percent):
+                            ally_to_heal = ally
+                            lowest_hp_percent = ally_hp_percent
+                
+
+                if ally_to_heal:
+                    old_hp = ally_to_heal.hp
+                    ally_to_heal.hp = min(ally_to_heal.max_hp, ally_to_heal.hp + heal_amount)
+                    heal_msg = f"{self.get_colored_name()} soigne {ally_to_heal.get_colored_name()} pour {COLORS['GREEN']}{heal_amount}{COLORS['RESET']} points de vie! ({old_hp} → {ally_to_heal.hp}/{ally_to_heal.max_hp} HP)"
+                    self.message_log.append(heal_msg)
+                    return
             if random.randint(1, 100) <= self.fumble_chance:
-                fumble_msg = f"{self.get_colored_name()} rate complètement son attaque contre {enemy.get_colored_name()} !"
-                self.receive_damage(10)
+                fumble_msg = f"{self.get_colored_name()} rate complètement son attaque contre {enemy.get_colored_name()} Il s'inflige {self.fumble_damage} de points de dégats !"
+                self.receive_damage(self.fumble_damage)
                 self.message_log.append(fumble_msg)
                 return
             
@@ -73,7 +105,7 @@ class Character:
         else:
             death_msg = f"{self.get_colored_name()} ne peut pas attaquer car il est mort"
             self.message_log.append(death_msg)
-
+            
     def receive_damage(self, damage: int):
         damage_dealt = damage * (1 - (self.armor / 100))
         self.hp -= damage_dealt
@@ -84,10 +116,7 @@ class Character:
         self.message_log.append(damage_msg)
         
         if self.hp <= 0:
-            death_msg = f"{COLORS['BOLD']}{COLORS['RED']}{self.name} est mort !{COLORS['RESET']}"
-            self.message_log.append(death_msg)
-            self.hp = 0
-            self.is_dead = True
+            self.die()
     
     def get_status_bar(self, width: int = 20):
         """Retourne une barre de progression visuelle des points de vie"""
@@ -114,3 +143,9 @@ class Character:
         messages = self.message_log.copy()
         self.message_log = []
         return messages
+
+    def die(self):
+        death_msg = f"{COLORS['BOLD']}{COLORS['RED']}{self.name} est mort !{COLORS['RESET']}"
+        self.message_log.append(death_msg)
+        self.hp = 0
+        self.is_dead = True

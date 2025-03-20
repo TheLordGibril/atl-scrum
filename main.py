@@ -686,7 +686,7 @@ def main():
                     living_enemies = get_living_characters(enemy_team)
                     if living_enemies:
                         target = random.choice(living_enemies)
-                        attacker.attack(target)
+                        attacker.attack(target, team1, team2)
                         
                         # Affiche l'état et attends
                         messages = display_team_battle(team1, team2, speed_controller, round_num)
