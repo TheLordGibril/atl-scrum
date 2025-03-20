@@ -1,0 +1,202 @@
+============================================================
+COMBAT : BLEUE VS ROUGE
+Date: 20/03/2025 10:52:25
+Vainqueur: INTERRUPTION
+============================================================
+
+[10:52:25] Démarrage du jeu
+[10:52:30] Taille d'équipe choisie: 1 personnages
+[10:52:41] Équipe BLEUE composée de:
+[10:52:41] - Guerrier Farzor: 120 HP, 2-10 DMG, 10% Crit, 5% Fumble
+[10:52:43] Équipe ROUGE composée de:
+[10:52:43] - Guerrier Banbek: 120 HP, 2-10 DMG, 10% Crit, 5% Fumble
+[10:52:43] Début du combat
+
+========================================
+ROUND 1
+========================================
+[10:52:44] Guerrier Farzor attaque Guerrier Banbek pour 3 points de dégâts
+[10:52:44] Guerrier Banbek reçoit 2.8 points de dégâts (117.24/120 HP - 97%)
+[10:52:44] Guerrier Farzor reçoit 6.4 points de dégâts (113.56/120 HP - 94%)
+[10:52:44] Guerrier Banbek attaque Guerrier Farzor pour 7 points de dégâts
+
+========================================
+ROUND 2
+========================================
+[10:52:46] Guerrier Farzor attaque Guerrier Banbek pour 6 points de dégâts
+[10:52:46] Guerrier Banbek reçoit 5.5 points de dégâts (111.72/120 HP - 93%)
+[10:52:46] Guerrier Farzor reçoit 3.7 points de dégâts (109.88/120 HP - 91%)
+[10:52:46] Guerrier Banbek assène un COUP CRITIQUE à Guerrier Farzor pour 4 points de dégâts!
+
+========================================
+ROUND 3
+========================================
+[10:52:48] Guerrier Farzor attaque Guerrier Banbek pour 6 points de dégâts
+[10:52:48] Guerrier Banbek reçoit 5.5 points de dégâts (106.2/120 HP - 88%)
+[10:52:49] Guerrier Farzor reçoit 5.5 points de dégâts (104.36/120 HP - 86%)
+[10:52:49] Guerrier Banbek attaque Guerrier Farzor pour 6 points de dégâts
+
+========================================
+ROUND 4
+========================================
+[10:52:50] Guerrier Farzor attaque Guerrier Banbek pour 3 points de dégâts
+[10:52:50] Guerrier Banbek reçoit 2.8 points de dégâts (103.44/120 HP - 86%)
+[10:52:51] Guerrier Farzor reçoit 7.4 points de dégâts (97.0/120 HP - 80%)
+[10:52:51] Guerrier Banbek attaque Guerrier Farzor pour 8 points de dégâts
+
+========================================
+ROUND 5
+========================================
+[10:52:52] Guerrier Farzor assène un COUP CRITIQUE à Guerrier Banbek pour 4 points de dégâts!
+[10:52:52] Guerrier Banbek reçoit 3.7 points de dégâts (99.75999999999999/120 HP - 83%)
+[10:52:53] Guerrier Farzor reçoit 3.7 points de dégâts (93.32/120 HP - 77%)
+[10:52:53] Guerrier Banbek attaque Guerrier Farzor pour 4 points de dégâts
+
+========================================
+ROUND 6
+========================================
+[10:52:54] Guerrier Farzor attaque Guerrier Banbek pour 9 points de dégâts
+[10:52:54] Guerrier Banbek reçoit 8.3 points de dégâts (91.47999999999999/120 HP - 76%)
+[10:52:55] Guerrier Farzor reçoit 5.5 points de dégâts (87.8/120 HP - 73%)
+[10:52:55] Guerrier Banbek attaque Guerrier Farzor pour 6 points de dégâts
+
+========================================
+ROUND 7
+========================================
+[10:52:56] Guerrier Farzor rate complètement son attaque contre Guerrier Banbek !
+[10:52:57] Guerrier Farzor reçoit 8.3 points de dégâts (79.52/120 HP - 66%)
+[10:52:57] Guerrier Banbek attaque Guerrier Farzor pour 9 points de dégâts
+
+========================================
+ROUND 8
+========================================
+[10:52:58] Guerrier Farzor attaque Guerrier Banbek pour 8 points de dégâts
+[10:52:58] Guerrier Banbek reçoit 7.4 points de dégâts (84.11999999999999/120 HP - 70%)
+[10:52:59] Guerrier Farzor reçoit 4.6 points de dégâts (74.92/120 HP - 62%)
+[10:52:59] Guerrier Banbek attaque Guerrier Farzor pour 5 points de dégâts
+
+========================================
+ROUND 9
+========================================
+[10:53:01] Guerrier Farzor attaque Guerrier Banbek pour 8 points de dégâts
+[10:53:01] Guerrier Banbek reçoit 7.4 points de dégâts (76.75999999999999/120 HP - 63%)
+[10:53:01] Guerrier Farzor reçoit 2.8 points de dégâts (72.16/120 HP - 60%)
+[10:53:01] Guerrier Banbek attaque Guerrier Farzor pour 3 points de dégâts
+
+========================================
+ROUND 10
+========================================
+[10:53:03] Guerrier Farzor attaque Guerrier Banbek pour 3 points de dégâts
+[10:53:03] Guerrier Banbek reçoit 2.8 points de dégâts (73.99999999999999/120 HP - 61%)
+[10:53:04] Guerrier Farzor reçoit 6.4 points de dégâts (65.72/120 HP - 54%)
+[10:53:04] Guerrier Banbek attaque Guerrier Farzor pour 7 points de dégâts
+
+========================================
+ROUND 11
+========================================
+[10:53:05] Guerrier Farzor attaque Guerrier Banbek pour 4 points de dégâts
+[10:53:05] Guerrier Banbek reçoit 3.7 points de dégâts (70.31999999999998/120 HP - 58%)
+[10:53:06] Guerrier Farzor reçoit 4.6 points de dégâts (61.12/120 HP - 50%)
+[10:53:06] Guerrier Banbek attaque Guerrier Farzor pour 5 points de dégâts
+
+========================================
+ROUND 12
+========================================
+[10:53:07] Guerrier Farzor attaque Guerrier Banbek pour 6 points de dégâts
+[10:53:07] Guerrier Banbek reçoit 5.5 points de dégâts (64.79999999999998/120 HP - 53%)
+[10:53:08] Guerrier Farzor reçoit 7.4 points de dégâts (53.76/120 HP - 44%)
+[10:53:08] Guerrier Banbek assène un COUP CRITIQUE à Guerrier Farzor pour 8 points de dégâts!
+
+========================================
+ROUND 13
+========================================
+[10:53:09] Guerrier Farzor attaque Guerrier Banbek pour 10 points de dégâts
+[10:53:09] Guerrier Banbek reçoit 9.2 points de dégâts (55.59999999999998/120 HP - 46%)
+[10:53:10] Guerrier Banbek rate complètement son attaque contre Guerrier Farzor !
+
+========================================
+ROUND 14
+========================================
+[10:53:11] Guerrier Farzor attaque Guerrier Banbek pour 6 points de dégâts
+[10:53:11] Guerrier Banbek reçoit 5.5 points de dégâts (50.07999999999998/120 HP - 41%)
+[10:53:12] Guerrier Farzor reçoit 2.8 points de dégâts (51.0/120 HP - 42%)
+[10:53:12] Guerrier Banbek attaque Guerrier Farzor pour 3 points de dégâts
+
+========================================
+ROUND 15
+========================================
+[10:53:13] Guerrier Farzor attaque Guerrier Banbek pour 5 points de dégâts
+[10:53:13] Guerrier Banbek reçoit 4.6 points de dégâts (45.479999999999976/120 HP - 37%)
+[10:53:14] Guerrier Farzor reçoit 9.2 points de dégâts (41.8/120 HP - 34%)
+[10:53:14] Guerrier Banbek attaque Guerrier Farzor pour 10 points de dégâts
+
+========================================
+ROUND 16
+========================================
+[10:53:16] Guerrier Farzor attaque Guerrier Banbek pour 9 points de dégâts
+[10:53:16] Guerrier Banbek reçoit 8.3 points de dégâts (37.199999999999974/120 HP - 30%)
+[10:53:16] Guerrier Farzor reçoit 7.4 points de dégâts (34.44/120 HP - 28%)
+[10:53:16] Guerrier Banbek attaque Guerrier Farzor pour 8 points de dégâts
+
+========================================
+ROUND 17
+========================================
+[10:53:18] Guerrier Farzor attaque Guerrier Banbek pour 4 points de dégâts
+[10:53:18] Guerrier Banbek reçoit 3.7 points de dégâts (33.519999999999975/120 HP - 27%)
+[10:53:18] Guerrier Farzor reçoit 2.8 points de dégâts (31.679999999999996/120 HP - 26%)
+[10:53:18] Guerrier Banbek attaque Guerrier Farzor pour 3 points de dégâts
+
+========================================
+ROUND 18
+========================================
+[10:53:20] Guerrier Farzor attaque Guerrier Banbek pour 8 points de dégâts
+[10:53:20] Guerrier Banbek reçoit 7.4 points de dégâts (26.159999999999975/120 HP - 21%)
+[10:53:21] Guerrier Farzor reçoit 5.5 points de dégâts (26.159999999999997/120 HP - 21%)
+[10:53:21] Guerrier Banbek attaque Guerrier Farzor pour 6 points de dégâts
+
+========================================
+ROUND 19
+========================================
+[10:53:22] Guerrier Farzor attaque Guerrier Banbek pour 9 points de dégâts
+[10:53:22] Guerrier Banbek reçoit 8.3 points de dégâts (17.879999999999974/120 HP - 14%)
+[10:53:23] Guerrier Farzor reçoit 8.3 points de dégâts (17.879999999999995/120 HP - 14%)
+[10:53:23] Guerrier Banbek attaque Guerrier Farzor pour 9 points de dégâts
+
+========================================
+ROUND 20
+========================================
+[10:53:24] Guerrier Farzor attaque Guerrier Banbek pour 6 points de dégâts
+[10:53:24] Guerrier Banbek reçoit 5.5 points de dégâts (12.359999999999975/120 HP - 10%)
+[10:53:25] Guerrier Farzor reçoit 7.4 points de dégâts (10.519999999999996/120 HP - 8%)
+[10:53:25] Guerrier Banbek assène un COUP CRITIQUE à Guerrier Farzor pour 8 points de dégâts!
+
+========================================
+ROUND 21
+========================================
+[10:53:26] Guerrier Farzor attaque Guerrier Banbek pour 3 points de dégâts
+[10:53:26] Guerrier Banbek reçoit 2.8 points de dégâts (9.599999999999975/120 HP - 7%)
+[10:53:27] Guerrier Farzor reçoit 2.8 points de dégâts (7.759999999999996/120 HP - 6%)
+[10:53:27] Guerrier Banbek attaque Guerrier Farzor pour 3 points de dégâts
+
+========================================
+ROUND 22
+========================================
+[10:53:28] Guerrier Farzor attaque Guerrier Banbek pour 6 points de dégâts
+[10:53:28] Guerrier Banbek reçoit 5.5 points de dégâts (4.079999999999974/120 HP - 3%)
+[10:53:29] Guerrier Farzor reçoit 3.7 points de dégâts (4.0799999999999965/120 HP - 3%)
+[10:53:29] Guerrier Banbek attaque Guerrier Farzor pour 4 points de dégâts
+
+========================================
+ROUND 23
+========================================
+[10:53:30] Guerrier Farzor assène un COUP CRITIQUE à Guerrier Banbek pour 8 points de dégâts!
+[10:53:30] Guerrier Banbek reçoit 7.4 points de dégâts (0/120 HP - 0%)
+[10:53:30] Guerrier Banbek est mort !
+[10:53:31] Guerrier Banbek ne peut pas attaquer car il est mort
+[10:53:33] L'équipe BLEUE a gagné en 23 rounds!
+[10:53:33] Personnages survivants: 1
+[10:53:33] Survivant (BLEUE): Guerrier Farzor: 4.0799999999999965/120 HP
+[11:00:16] Combat interrompu par l'utilisateur
+
+============================================================
+FIN DU COMBAT - 20/03/2025 11:00:16

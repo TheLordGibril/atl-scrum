@@ -226,6 +226,7 @@ def display_character_selection():
         print(f"    {CharacterRoster.get_character_description(i)}")
         print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
         print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}%")
+        print(f"    Armure: {character.armor}% | Arme: {"test"}%")
         print()
     
     return characters
@@ -313,7 +314,8 @@ def interactive_character_selection(characters, team_name, team_color, team_size
                 min_damage=selected_char.min_damage,
                 max_damage=selected_char.max_damage,
                 critical_chance=selected_char.critical_chance,
-                fumble_chance=selected_char.fumble_chance
+                fumble_chance=selected_char.fumble_chance,
+                armor=selected_char.armor
             )
             team.append(character)
             
@@ -359,6 +361,7 @@ def select_team_members_manual(team_name, team_color, available_characters, team
             print(f"    {CharacterRoster.get_character_description(j)}")
             print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
             print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}%\n")
+            print(f"    Armure: {character.armor}% | Arme: {"test"}%")
         
         # Demande la sélection
         while True:
@@ -423,6 +426,7 @@ def display_selection_screen(characters, current_index, team_name, team_color, c
             print(f"    {CharacterRoster.get_character_description(i)}")
             print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
             print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}%")
+            print(f"    Armure: {character.armor}% | Arme: {"test"}%")
         print()
     
     # Liste des personnages déjà sélectionnés

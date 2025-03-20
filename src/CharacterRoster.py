@@ -11,7 +11,8 @@ class CharacterRoster:
                 min_damage=2,
                 max_damage=10, 
                 critical_chance=10, 
-                fumble_chance=5
+                fumble_chance=5,
+                armor=8
             ),
             Character(
                 name="Mage", 
@@ -19,7 +20,8 @@ class CharacterRoster:
                 min_damage=3,
                 max_damage=12, 
                 critical_chance=15, 
-                fumble_chance=10
+                fumble_chance=10,
+                armor=3,
             ),
             Character(
                 name="Paladin", 
@@ -27,7 +29,8 @@ class CharacterRoster:
                 min_damage=1,
                 max_damage=8, 
                 critical_chance=5, 
-                fumble_chance=5
+                fumble_chance=5,
+                armor=15,
             ),
             Character(
                 name="Voleur", 
@@ -35,7 +38,8 @@ class CharacterRoster:
                 min_damage=2,
                 max_damage=10, 
                 critical_chance=20, 
-                fumble_chance=5
+                fumble_chance=5,
+                armor=5,
             ),
             Character(
                 name="Chevalier", 
@@ -43,7 +47,8 @@ class CharacterRoster:
                 min_damage=2,
                 max_damage=9, 
                 critical_chance=8, 
-                fumble_chance=7
+                fumble_chance=7,
+                armor=10,
             ),
             Character(
                 name="Vampire", 
@@ -51,7 +56,8 @@ class CharacterRoster:
                 min_damage=2,
                 max_damage=9, 
                 critical_chance=10, 
-                fumble_chance=8
+                fumble_chance=8,
+                armor=6,
             ),
             Character(
                 name="Archer", 
@@ -59,7 +65,8 @@ class CharacterRoster:
                 min_damage=1,
                 max_damage=12, 
                 critical_chance=25, 
-                fumble_chance=15
+                fumble_chance=15,
+                armor=4,
             ),
             Character(
                 name="Berserker", 
@@ -67,7 +74,8 @@ class CharacterRoster:
                 min_damage=4,
                 max_damage=10, 
                 critical_chance=15, 
-                fumble_chance=10
+                fumble_chance=10,
+                armor=0,
             )
         ]
     

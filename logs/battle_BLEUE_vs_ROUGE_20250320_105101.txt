@@ -1,0 +1,14 @@
+============================================================
+COMBAT : BLEUE VS ROUGE
+Date: 20/03/2025 10:51:01
+Vainqueur: INTERRUPTION
+============================================================
+
+[10:51:01] Démarrage du jeu
+[10:51:03] Taille d'équipe choisie: 1 personnages
+[10:51:18] Équipe BLEUE composée de:
+[10:51:18] - Paladin Yorlum: 150 HP, 1-8 DMG, 5% Crit, 5% Fumble
+[10:52:23] Combat interrompu par l'utilisateur
+
+============================================================
+FIN DU COMBAT - 20/03/2025 10:52:23
