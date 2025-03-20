@@ -82,8 +82,8 @@ class Character:
                     self.message_log.append(heal_msg)
                     return
             if random.randint(1, 100) <= self.fumble_chance:
-                fumble_msg = f"{self.get_colored_name()} rate complètement son attaque contre {enemy.get_colored_name()} Il s'inflige {self.receive_damage(10)} !"
-                self.receive_damage(10)
+                fumble_msg = f"{self.get_colored_name()} rate complètement son attaque contre {enemy.get_colored_name()} Il s'inflige {self.fumble_damage} de points de dégats !"
+                self.receive_damage(self.fumble_damage)
                 self.message_log.append(fumble_msg)
                 return
             
