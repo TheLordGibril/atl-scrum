@@ -20,7 +20,7 @@ class Character:
     def __init__(self, name: str = "Character", team_color: str = "BLUE", 
                  hp: int = 100, min_damage: int = 0, max_damage: int = 10, 
                  critical_chance: int = 10, fumble_chance: int = 5,
-                 speed: int = 10, armor: int = 0):
+                 speed: int = 10, armor: int = 0, weapon: int = 0):
         self.name: str = name
         self.hp: int = hp
         self.max_hp: int = hp
@@ -30,6 +30,7 @@ class Character:
         self.fumble_chance: int = fumble_chance      # Pourcentage de chance de rater l'attaque
         self.speed: int = speed                      # Vitesse du personnage pour l'initiative
         self.armor: int = armor
+        self.weapon: int = weapon
         self.is_dead: bool = False
         self.team_color: str = team_color
         self.message_log: list = []
