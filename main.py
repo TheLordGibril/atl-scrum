@@ -234,7 +234,7 @@ def display_character_selection():
     for i, character in enumerate(characters):
         print(f"{COLORS['BOLD']}[{i+1}]{COLORS['RESET']} {character.name}")
         print(f"    {CharacterRoster.get_character_description(i)}")
-        print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
+        print(f"    HP: {character.hp} | Dégâts: {1+character.weapon}-{10+character.strength+character.weapon}")
         print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}")
         print()
     
@@ -320,8 +320,7 @@ def interactive_character_selection(characters, team_name, team_color, team_size
                 name=f"{selected_char.name} {medieval_name}",
                 team_color=team_color,
                 hp=selected_char.hp,
-                min_damage=selected_char.min_damage,
-                max_damage=selected_char.max_damage,
+                strength=selected_char.strength,
                 critical_chance=selected_char.critical_chance,
                 fumble_chance=selected_char.fumble_chance,
                 speed=selected_char.speed,
@@ -370,7 +369,7 @@ def select_team_members_manual(team_name, team_color, available_characters, team
         for j, character in enumerate(available_characters):
             print(f"{COLORS['BOLD']}[{j+1}]{COLORS['RESET']} {character.name}")
             print(f"    {CharacterRoster.get_character_description(j)}")
-            print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
+            print(f"    HP: {character.hp} | Dégâts: {1+character.weapon}-{10+character.strength+character.weapon}")
             print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}\n")
         
         # Demande la sélection
@@ -387,8 +386,7 @@ def select_team_members_manual(team_name, team_color, available_characters, team
                         name=f"{selected_char.name} {medieval_name}",
                         team_color=team_color,
                         hp=selected_char.hp,
-                        min_damage=selected_char.min_damage,
-                        max_damage=selected_char.max_damage,
+                        strength=selected_char.strength,
                         critical_chance=selected_char.critical_chance,
                         fumble_chance=selected_char.fumble_chance,
                         speed=selected_char.speed
@@ -435,9 +433,10 @@ def display_selection_screen(characters, current_index, team_name, team_color, c
         # Affiche la description et les stats uniquement pour le personnage sélectionné
         if i == current_index:
             print(f"    {CharacterRoster.get_character_description(i)}")
-            print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
+            print(f"    HP: {character.hp} | Force: {character.strength}")
             print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}")
             print(f"    Armure: {character.armor} | Arme: {character.weapon}")
+            print(f"    Dégâts: {1+character.weapon}-{10+character.weapon+character.strength}")
         print()
     
     # Liste des personnages déjà sélectionnés
@@ -611,7 +610,7 @@ def main():
         # Log des personnages choisis pour l'équipe 1
         battle_logger.add_log("Équipe BLEUE composée de:")
         for char in team1:
-            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage + char.weapon}-{char.max_damage + char.weapon} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
+            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {1 + char.weapon}-{10+char.strength+char.weapon} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
         
         # Sélection de l'équipe 2 (rouge) avec l'interface interactive
         team2 = select_team_members_interactive("ROUGE", "RED", available_characters, team2_size)
@@ -619,7 +618,7 @@ def main():
         # Log des personnages choisis pour l'équipe 2
         battle_logger.add_log("Équipe ROUGE composée de:")
         for char in team2:
-            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage + char.weapon}-{char.max_damage + char.weapon} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
+            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {1 + char.weapon}-{10+char.strength+char.weapon} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
         
         # Confirmation des sélections
         clear_screen()
@@ -726,14 +725,14 @@ def main():
         if not team_is_defeated(team1):
             print(f"\n{COLORS['BLUE']}Survivants de l'équipe BLEUE:{COLORS['RESET']}")
             for char in get_living_characters(team1):
-                survivor_msg = f"{char.name}: {round(char.hp, 1)}/{char.max_hp} HP"
+                survivor_msg = f"{char.name}: {char.hp}/{char.max_hp} HP"
                 print(f"  - {survivor_msg}")
                 battle_logger.add_log(f"Survivant (BLEUE): {survivor_msg}")
         
         if not team_is_defeated(team2):
             print(f"\n{COLORS['RED']}Survivants de l'équipe ROUGE:{COLORS['RESET']}")
             for char in get_living_characters(team2):
-                survivor_msg = f"{char.name}: {round(char.hp, 1)}/{char.max_hp} HP"
+                survivor_msg = f"{char.name}: {char.hp}/{char.max_hp} HP"
                 print(f"  - {survivor_msg}")
                 battle_logger.add_log(f"Survivant (ROUGE): {survivor_msg}")
         
