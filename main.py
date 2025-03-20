@@ -324,7 +324,8 @@ def interactive_character_selection(characters, team_name, team_color, team_size
                 max_damage=selected_char.max_damage,
                 critical_chance=selected_char.critical_chance,
                 fumble_chance=selected_char.fumble_chance,
-                speed=selected_char.speed
+                speed=selected_char.speed,
+                armor=selected_char.armor
             )
             team.append(character)
             
@@ -435,6 +436,7 @@ def display_selection_screen(characters, current_index, team_name, team_color, c
             print(f"    {CharacterRoster.get_character_description(i)}")
             print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
             print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}")
+            print(f"    Armure: {character.armor}")
         print()
     
     # Liste des personnages déjà sélectionnés
@@ -723,14 +725,14 @@ def main():
         if not team_is_defeated(team1):
             print(f"\n{COLORS['BLUE']}Survivants de l'équipe BLEUE:{COLORS['RESET']}")
             for char in get_living_characters(team1):
-                survivor_msg = f"{char.name}: {char.hp}/{char.max_hp} HP"
+                survivor_msg = f"{char.name}: {round(char.hp, 1)}/{char.max_hp} HP"
                 print(f"  - {survivor_msg}")
                 battle_logger.add_log(f"Survivant (BLEUE): {survivor_msg}")
         
         if not team_is_defeated(team2):
             print(f"\n{COLORS['RED']}Survivants de l'équipe ROUGE:{COLORS['RESET']}")
             for char in get_living_characters(team2):
-                survivor_msg = f"{char.name}: {char.hp}/{char.max_hp} HP"
+                survivor_msg = f"{char.name}: {round(char.hp, 1)}/{char.max_hp} HP"
                 print(f"  - {survivor_msg}")
                 battle_logger.add_log(f"Survivant (ROUGE): {survivor_msg}")
         
