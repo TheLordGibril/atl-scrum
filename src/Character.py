@@ -20,7 +20,7 @@ class Character:
     def __init__(self, name: str = "Character", team_color: str = "BLUE", 
                  hp: int = 100, min_damage: int = 0, max_damage: int = 10, 
                  critical_chance: int = 10, fumble_chance: int = 5,
-                 speed: int = 10, armor: int = 0, weapon: int = 0):
+                 fumble_damage: int = 10, speed: int = 10, armor: int = 0):
         self.name: str = name
         self.hp: int = hp
         self.max_hp: int = hp
@@ -28,15 +28,15 @@ class Character:
         self.max_damage: int = max_damage
         self.critical_chance: int = critical_chance  # Pourcentage de chance d'infliger des dégâts doubles
         self.fumble_chance: int = fumble_chance      # Pourcentage de chance de rater l'attaque
+        self.fumble_damage: int = fumble_damage
         self.speed: int = speed                      # Vitesse du personnage pour l'initiative
         self.armor: int = armor
-        self.weapon: int = weapon
         self.is_dead: bool = False
         self.team_color: str = team_color
         self.message_log: list = []
         self.initiative_roll = 0        # Pour le jet d'initiative principal
-        self.tiebreaker_roll = 0 
-    
+        self.tiebreaker_roll = 0
+
     def roll_initiative(self):
         """Lance un dé d'initiative pour départager les égalités de vitesse"""
         self.initiative_roll = random.randint(1, 20)
@@ -51,6 +51,7 @@ class Character:
             # Vérification si l'attaque rate (fumble)
             if random.randint(1, 100) <= self.fumble_chance:
                 fumble_msg = f"{self.get_colored_name()} rate complètement son attaque contre {enemy.get_colored_name()} !"
+                self.receive_damage(10)
                 self.message_log.append(fumble_msg)
                 return
             

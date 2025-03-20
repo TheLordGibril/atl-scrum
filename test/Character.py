@@ -18,5 +18,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(0, player.hp)
         self.assertTrue(player.is_dead)
 
+    def test_character_receive_fumble_damage(self):
+        fumble_damage = 10
+        player1 = Character(fumble_chance=100, fumble_damage=fumble_damage)
+        player2 = Character()
+        player1.attack(player2)
+        self.assertEqual(player1.max_hp - fumble_damage, player1.hp)
+
 if __name__ == '__main__':
     unittest.main()
