@@ -81,6 +81,7 @@ class Character:
         if self.hp <= 0:
             death_msg = f"{COLORS['BOLD']}{COLORS['RED']}{self.name} est mort !{COLORS['RESET']}"
             self.message_log.append(death_msg)
+            self.hp = 0
             self.is_dead = True
     
     def get_status_bar(self, width: int = 20):
