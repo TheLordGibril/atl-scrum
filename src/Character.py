@@ -47,12 +47,12 @@ class Character:
     def attack(self, enemy: Self, team1=None, team2=None):
         if not self.is_dead:
             if "Paladin" in self.name:
-                heal_amount = 15
+                heal_amount = random.randint(1,5)
                 paladin_hp_percent = self.hp / self.max_hp
                 if paladin_hp_percent < 0.7:
                     old_hp = self.hp
                     self.hp = min(self.max_hp, self.hp + heal_amount)
-                    heal_msg = f"{self.get_colored_name()} se soigne pour {COLORS['GREEN']}{heal_amount}{COLORS['RESET']} points de vie! ({old_hp} → {self.hp}/{self.max_hp} HP)"
+                    heal_msg = f"{self.get_colored_name()} se soigne pour {COLORS['GREEN']}{round(heal_amount,1)}{COLORS['RESET']} points de vie! ({round(old_hp,1)} → {round(self.hp,1)}/{round(self.max_hp,1)} HP)"
                     self.message_log.append(heal_msg)
                     return
                 team_members = []
