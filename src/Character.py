@@ -18,14 +18,12 @@ def strip_ansi_codes(text):
 
 class Character:
     def __init__(self, name: str = "Character", team_color: str = "BLUE", 
-                 hp: int = 100, min_damage: int = 0, max_damage: int = 10, 
-                 critical_chance: int = 10, fumble_chance: int = 5,
+                 hp: int = 100, strength: int = 0, critical_chance: int = 10, fumble_chance: int = 5,
                  fumble_damage: int = 10, speed: int = 10, armor: int = 0, weapon: int =0):
         self.name: str = name
         self.hp: int = hp
         self.max_hp: int = hp
-        self.min_damage: int = min_damage
-        self.max_damage: int = max_damage
+        self.strength: int = strength
         self.critical_chance: int = critical_chance  # Pourcentage de chance d'infliger des dégâts doubles
         self.fumble_chance: int = fumble_chance      # Pourcentage de chance de rater l'attaque
         self.fumble_damage: int = fumble_damage
@@ -89,7 +87,7 @@ class Character:
                 return
             
             # Calcul des dégâts aléatoires
-            base_damage = random.randint(self.min_damage + self.weapon, self.max_damage + self.weapon)
+            base_damage = random.randint(1+self.weapon, 10+self.strength + self.weapon)
             
             # Vérification d'un coup critique
             is_critical = random.randint(1, 100) <= self.critical_chance
@@ -98,7 +96,7 @@ class Character:
             if is_critical:
                 attack_msg = f"{self.get_colored_name()} assène un {COLORS['YELLOW']}COUP CRITIQUE{COLORS['RESET']} à {enemy.get_colored_name()} pour {damage_dealt} points de dégâts!"
             else:
-                attack_msg = f"{self.get_colored_name()} lance un dé a {self.max_damage} faces et obtient un {base_damage} ! Il attaque {enemy.get_colored_name()} pour {damage_dealt} points de dégâts"
+                attack_msg = f"{self.get_colored_name()} lance un dé a {10+self.weapon+self.strength} faces et obtient un {base_damage} ! Il attaque {enemy.get_colored_name()} pour {damage_dealt} points de dégâts"
             
             self.message_log.append(attack_msg)
             enemy.receive_damage(damage_dealt)
@@ -135,7 +133,7 @@ class Character:
     
     def get_stats_display(self):
         """Affiche les statistiques du personnage"""
-        return (f"{self.get_colored_name()}: {self.hp} HP, {self.min_damage}-{self.max_damage} DMG, "
+        return (f"{self.get_colored_name()}: {self.hp} HP, {1+self.weapon}-{10+self.weapon+self.strength} DMG, "
                 f"{self.critical_chance}% Crit, {self.fumble_chance}% Fumble, {self.speed} Vitesse")
     
     def clear_messages(self):
