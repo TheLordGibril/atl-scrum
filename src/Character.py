@@ -20,7 +20,7 @@ class Character:
     def __init__(self, name: str = "Character", team_color: str = "BLUE", 
                  hp: int = 100, min_damage: int = 0, max_damage: int = 10, 
                  critical_chance: int = 10, fumble_chance: int = 5,
-                 speed: int = 10):
+                 speed: int = 10, armor: int = 0):
         self.name: str = name
         self.hp: int = hp
         self.max_hp: int = hp
@@ -29,6 +29,7 @@ class Character:
         self.critical_chance: int = critical_chance  # Pourcentage de chance d'infliger des dégâts doubles
         self.fumble_chance: int = fumble_chance      # Pourcentage de chance de rater l'attaque
         self.speed: int = speed                      # Vitesse du personnage pour l'initiative
+        self.armor: int = armor
         self.is_dead: bool = False
         self.team_color: str = team_color
         self.message_log: list = []
@@ -71,11 +72,12 @@ class Character:
             self.message_log.append(death_msg)
 
     def receive_damage(self, damage: int):
-        self.hp -= damage
+        damage_dealt = damage * (1 - (self.armor / 100))
+        self.hp -= damage_dealt
         remaining_hp = max(0, self.hp)
         hp_percent = int((remaining_hp / self.max_hp) * 100)
         
-        damage_msg = f"{self.get_colored_name()} reçoit {damage} points de dégâts ({remaining_hp}/{self.max_hp} HP - {hp_percent}%)"
+        damage_msg = f"{self.get_colored_name()} reçoit {round(damage_dealt, 1)} points de dégâts ({round(remaining_hp, 1)}/{self.max_hp} HP - {hp_percent}%)"
         self.message_log.append(damage_msg)
         
         if self.hp <= 0:
