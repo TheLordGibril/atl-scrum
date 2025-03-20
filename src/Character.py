@@ -114,10 +114,7 @@ class Character:
         self.message_log.append(damage_msg)
         
         if self.hp <= 0:
-            death_msg = f"{COLORS['BOLD']}{COLORS['RED']}{self.name} est mort !{COLORS['RESET']}"
-            self.message_log.append(death_msg)
-            self.hp = 0
-            self.is_dead = True
+            self.die()
     
     def get_status_bar(self, width: int = 20):
         """Retourne une barre de progression visuelle des points de vie"""
@@ -144,3 +141,9 @@ class Character:
         messages = self.message_log.copy()
         self.message_log = []
         return messages
+
+    def die(self):
+        death_msg = f"{COLORS['BOLD']}{COLORS['RED']}{self.name} est mort !{COLORS['RESET']}"
+        self.message_log.append(death_msg)
+        self.hp = 0
+        self.is_dead = True
