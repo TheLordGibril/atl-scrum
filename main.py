@@ -325,7 +325,8 @@ def interactive_character_selection(characters, team_name, team_color, team_size
                 critical_chance=selected_char.critical_chance,
                 fumble_chance=selected_char.fumble_chance,
                 speed=selected_char.speed,
-                armor=selected_char.armor
+                armor=selected_char.armor,
+                weapon=selected_char.weapon
             )
             team.append(character)
             
@@ -436,7 +437,7 @@ def display_selection_screen(characters, current_index, team_name, team_color, c
             print(f"    {CharacterRoster.get_character_description(i)}")
             print(f"    HP: {character.hp} | Dégâts: {character.min_damage}-{character.max_damage}")
             print(f"    Critique: {character.critical_chance}% | Fumble: {character.fumble_chance}% | Vitesse: {character.speed}")
-            print(f"    Armure: {character.armor}")
+            print(f"    Armure: {character.armor} | Arme: {character.weapon}")
         print()
     
     # Liste des personnages déjà sélectionnés
@@ -610,7 +611,7 @@ def main():
         # Log des personnages choisis pour l'équipe 1
         battle_logger.add_log("Équipe BLEUE composée de:")
         for char in team1:
-            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
+            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage + char.weapon}-{char.max_damage + char.weapon} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
         
         # Sélection de l'équipe 2 (rouge) avec l'interface interactive
         team2 = select_team_members_interactive("ROUGE", "RED", available_characters, team2_size)
@@ -618,7 +619,7 @@ def main():
         # Log des personnages choisis pour l'équipe 2
         battle_logger.add_log("Équipe ROUGE composée de:")
         for char in team2:
-            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage}-{char.max_damage} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
+            battle_logger.add_log(f"- {char.name}: {char.hp} HP, {char.min_damage + char.weapon}-{char.max_damage + char.weapon} DMG, {char.critical_chance}% Crit, {char.fumble_chance}% Fumble, {char.speed} Vitesse")
         
         # Confirmation des sélections
         clear_screen()

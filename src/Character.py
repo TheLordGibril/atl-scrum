@@ -57,7 +57,7 @@ class Character:
                 return
             
             # Calcul des dégâts aléatoires
-            base_damage = random.randint(self.min_damage, self.max_damage)
+            base_damage = random.randint(self.min_damage + self.weapon, self.max_damage + self.weapon)
             
             # Vérification d'un coup critique
             is_critical = random.randint(1, 100) <= self.critical_chance
