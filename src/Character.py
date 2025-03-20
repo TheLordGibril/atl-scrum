@@ -20,7 +20,7 @@ class Character:
     def __init__(self, name: str = "Character", team_color: str = "BLUE", 
                  hp: int = 100, min_damage: int = 0, max_damage: int = 10, 
                  critical_chance: int = 10, fumble_chance: int = 5,
-                 fumble_damage: int = 10, speed: int = 10, armor: int = 0):
+                 fumble_damage: int = 10, speed: int = 10, armor: int = 0, weapon: int =0):
         self.name: str = name
         self.hp: int = hp
         self.max_hp: int = hp
@@ -31,6 +31,7 @@ class Character:
         self.fumble_damage: int = fumble_damage
         self.speed: int = speed                      # Vitesse du personnage pour l'initiative
         self.armor: int = armor
+        self.weapon: int = weapon
         self.is_dead: bool = False
         self.team_color: str = team_color
         self.message_log: list = []
@@ -87,7 +88,8 @@ class Character:
                 self.message_log.append(fumble_msg)
                 return
             
-            base_damage = random.randint(self.min_damage, self.max_damage)
+            # Calcul des dégâts aléatoires
+            base_damage = random.randint(self.min_damage + self.weapon, self.max_damage + self.weapon)
             
             # Vérification d'un coup critique
             is_critical = random.randint(1, 100) <= self.critical_chance

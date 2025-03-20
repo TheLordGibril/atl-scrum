@@ -13,7 +13,8 @@ class CharacterRoster:
                 critical_chance=10, 
                 fumble_chance=5,
                 speed=12,
-                armor=8
+                armor=8,
+                weapon=5
             ),
             Character(
                 name="Mage", 
@@ -23,7 +24,8 @@ class CharacterRoster:
                 critical_chance=15, 
                 fumble_chance=10,
                 speed=10,
-                armor=3
+                armor=3,
+                weapon=1
             ),
             Character(
                 name="Paladin", 
@@ -33,7 +35,8 @@ class CharacterRoster:
                 critical_chance=5, 
                 fumble_chance=5,
                 speed=8,
-                armor=15
+                armor=15,
+                weapon=1
             ),
             Character(
                 name="Voleur", 
@@ -43,7 +46,8 @@ class CharacterRoster:
                 critical_chance=20, 
                 fumble_chance=5,
                 speed=21,
-                armor=5
+                armor=5,
+                weapon=5
             ),
             Character(
                 name="Chevalier", 
@@ -53,7 +57,8 @@ class CharacterRoster:
                 critical_chance=8, 
                 fumble_chance=7,
                 speed=11,
-                armor=10
+                armor=10,
+                weapon=3
             ),
             Character(
                 name="Vampire", 
@@ -63,7 +68,8 @@ class CharacterRoster:
                 critical_chance=10, 
                 fumble_chance=8,
                 speed=14,
-                armor=6
+                armor=6,
+                weapon=8
             ),
             Character(
                 name="Archer", 
@@ -73,7 +79,8 @@ class CharacterRoster:
                 critical_chance=25, 
                 fumble_chance=15,
                 speed=20,
-                armor=4
+                armor=4,
+                weapon=6
             ),
             Character(
                 name="Berserker", 
@@ -83,7 +90,8 @@ class CharacterRoster:
                 critical_chance=15, 
                 fumble_chance=10,
                 speed=20,
-                armor=0
+                armor=0,
+                weapon=10
             )
         ]
     
